@@ -122,3 +122,40 @@ exports.getUser = asyncHandler(async (req, res) => {
 		throw new Error("error")
 	}
 })
+
+/**
+ * @description user deletes post/s
+ */
+exports.deleteUser = asyncHandler(async (req, res) => {
+	const { userId } = req.params
+
+	const user = req?.user
+
+	try {
+		if (user._id.toString() === userId.toString()) {
+			await User.findOneAndDelete({ _id: userId })
+
+			res.status(200).json({ msg: "Post deleted" })
+		} else {
+			res.status(401).json({ msg: "Please login to continue" })
+		}
+	} catch (error) {
+		throw new Error("error", error)
+	}
+})
+
+exports.updateUser = asyncHandler(async (req, res) => {})
+
+//TODO:CREATE GOOGLE ACCOUNT AND SETUP EMAIL AND NODEMAILER CONFIG
+// exports.forgottenPasswordToken = asyncHandler(async (req, res) => {
+// 	const email = req.body.email
+
+// 	const user = await User.findOne({ email })
+
+// 	if (!user) throw new Error("No user with this email exists. Please sign up")
+
+// 	try {
+// 		const token = await generateToken({ userId: user._id, email })
+
+// 	} catch (error) {}
+// })

@@ -18,7 +18,6 @@ const postSchema = new Schema(
 			required: true,
 			ref: "User",
 		},
-
 		numViews: {
 			type: Number,
 			default: 0,

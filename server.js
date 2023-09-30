@@ -9,7 +9,7 @@ const { notFound, errorHandler } = require("./middlewares/errorHandler")
 
 const app = express()
 
-// mongodb connection
+//mongodb connection
 dbConnection()
 
 app.use(morgan("dev"))
