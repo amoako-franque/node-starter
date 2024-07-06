@@ -1,1 +1,1 @@
-# node-starter tutorial for slightly techie students
+# node-starter template
